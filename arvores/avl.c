@@ -39,13 +39,14 @@ int maior(int a, int b)
 Arv* rotDireita(Arv* a)
 {
 	Arv* aux = a->esq;
-	Arv* auz = a->dir;
+	Arv* auz = aux->dir;
 
 	aux->dir = a;
 	a->esq = auz;
 
 	a->altura = maior(height(a->esq), height(a->dir)) + 1;
 	aux->altura = maior(height(aux->esq), height(aux->dir)) + 1;
+	a = aux;
 	return a;
 }
 
@@ -64,15 +65,12 @@ Arv* rotEsquerda(Arv* a)
 }
 
 
-
-
 Arv* inserir(Arv* a, int c) 
 {
     if(a == NULL)
     {
         a = malloc(sizeof(Arv));
         a->info = c;
-        a->altura = 1;
         a->esq = a->dir = NULL;
     } else {
         if (c < a->info) 
@@ -84,7 +82,7 @@ Arv* inserir(Arv* a, int c)
             a->dir = inserir(a->dir, c);
         }
     }
-    return a;
+    
     a->altura = 1 + maior(height(a->esq), height(a->dir));
 
     int balanco = profundidade(a);
@@ -125,7 +123,7 @@ int main()
     a = inserir(a, 8);
     a = inserir(a, 5);
     a = inserir(a, 7);
-    a = inserir(a, 11);
+    //a = inserir(a, 11);
 
 
     imprime(a);
