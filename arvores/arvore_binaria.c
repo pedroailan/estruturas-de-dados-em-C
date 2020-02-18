@@ -64,22 +64,27 @@ Arv* busca_cp(Arv* a, int c)
 
 Arv* busca_noh(Arv* a,  int c)
 {
-    Arv* paidele = NULL;
+    Arv* paidele = a;
     
-    while(a != NULL) {
-        if(a->info == c)
-        {
-            return a;
+    if(a->info == c) return paidele;
+    
+    while(a) {
+      if(a->info > c) {
+        if(a->info == c) {
+            return paidele;
         }
 
         paidele = a;
-        if(a->info > c) {
-             a = a->esq;
-        } else {
-            a = a->dir;
+        a = a->esq;
+      }
+        if(a->info < c) {
+          if(a->info == c){
+             return paidele;
+        }
+        paidele = a;
+        a = a->dir;
         }
     }
-    return paidele;
 }
 
 Arv* remover(Arv* a, int c)
