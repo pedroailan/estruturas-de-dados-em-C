@@ -1,0 +1,23 @@
+Pedro Ailan
+201700129431
+
+
+a) Prove que n² + n + 10 = Ômega(n lg n). (Provar)
+
+	f(n) = n² + n + 10
+	i(n) = n log n
+	
+	Existe um c e um n tal que f(n) >= c i(n) para qualquer n >= 0
+
+	Sendo assim,
+	
+	n² + n + 10 >= n log n
+  
+       n + 1 + 10/n >= log (n)
+
+		  n >= log (n) - 10/n - 1
+
+
+b) A afirmação a seguir está correta? n²/1000 − 999 n = Teta(n²). (Provar)
+
+	n²/1000 - 999n = 
